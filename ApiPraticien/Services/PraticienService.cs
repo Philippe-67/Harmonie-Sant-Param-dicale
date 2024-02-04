@@ -8,6 +8,10 @@ public class PraticienService
     {
         _praticienRepository = praticienRepository;
     }
+    public IEnumerable<Praticien> GetAllPraticien()
+    {
+        return _praticienRepository.GetAllPraticien();
+    }
 
     public Praticien GetPraticienById(int id)
     {

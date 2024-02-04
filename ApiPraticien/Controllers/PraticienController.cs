@@ -12,6 +12,12 @@ public class PraticienController : ControllerBase
     {
         _praticienService = praticienService;
     }
+    [HttpGet]
+    public IActionResult GetAllPraticien()
+    {
+        var allRdv = _praticienService.GetAllPraticien();
+        return Ok(allRdv);
+    }
 
     [HttpGet("{id}")]
     public IActionResult GetPraticienById(int id)

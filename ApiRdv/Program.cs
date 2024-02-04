@@ -42,6 +42,8 @@ var configuration = new ConfigurationBuilder()
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddScoped<RdvService>();
+builder.Services.AddScoped<RdvRepository>();
 
 builder.Services.AddDbContext<RdvDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));

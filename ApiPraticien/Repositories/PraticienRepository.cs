@@ -4,28 +4,33 @@ using ApiPraticien.Models;
 
 public class PraticienRepository
 {
-    private readonly PraticienDbContext _context;
+    private readonly PraticienDbContext _praticienRepository;
 
-    public PraticienRepository(PraticienDbContext context)
+    public PraticienRepository(PraticienDbContext praticienRepository)
     {
-        _context = context;
+        _praticienRepository = praticienRepository;
+    }
+    public IEnumerable<Praticien> GetAllPraticien()
+    {
+        // Implémentez la logique pour récupérer tous les rendez-vous de la source de données
+        return _praticienRepository.Praticiens.ToList(); // Exemple avec Entity Framework
     }
 
     public Praticien GetPraticienById(int id)
     {
-        return _context.Praticiens.Find(id);
+        return _praticienRepository.Praticiens.Find(id);
     }
 
     public Praticien CreatePraticien(Praticien praticien)
     {
-        _context.Praticiens.Add(praticien);
-        _context.SaveChanges();
+        _praticienRepository.Praticiens.Add(praticien);
+        _praticienRepository.SaveChanges();
         return praticien;
     }
 
     public Praticien UpdatePraticien(int id, Praticien praticien)
     {
-        var existingPraticien = _context.Praticiens.Find(id);
+        var existingPraticien = _praticienRepository.Praticiens.Find(id);
         if (existingPraticien == null)
         {
             return null;
@@ -34,20 +39,20 @@ public class PraticienRepository
         existingPraticien.NomPraticien = praticien.NomPraticien;
         existingPraticien.Specialite = praticien.Specialite;
 
-        _context.SaveChanges();
+        _praticienRepository.SaveChanges();
         return existingPraticien;
     }
 
     public bool DeletePraticien(int id)
     {
-        var praticien = _context.Praticiens.Find(id);
+        var praticien = _praticienRepository.Praticiens.Find(id);
         if (praticien == null)
         {
             return false;
         }
 
-        _context.Praticiens.Remove(praticien);
-        _context.SaveChanges();
+        _praticienRepository.Praticiens.Remove(praticien);
+        _praticienRepository.SaveChanges();
         return true;
     }
 }

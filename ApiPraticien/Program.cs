@@ -42,6 +42,9 @@ var configuration = new ConfigurationBuilder()
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddScoped<PraticienService>();
+builder.Services.AddScoped<PraticienRepository>();
+
 
 builder.Services.AddDbContext<PraticienDbContext>(options =>
     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
