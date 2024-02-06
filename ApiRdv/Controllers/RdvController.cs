@@ -1,10 +1,76 @@
 ﻿
-using Microsoft.AspNetCore.Mvc;
+//using Microsoft.AspNetCore.Mvc;
+//using ApiRdv.Models;
+
+
+//[Route("api/[controller]")]
+//[ApiController]
+//public class RdvController : ControllerBase
+//{
+//    private readonly RdvService _rdvService;
+
+//    public RdvController(RdvService rdvService)
+//    {
+//        _rdvService = rdvService;
+//    }
+//    [HttpGet]
+//    public IActionResult GetAllRdv()
+//    {
+//        var allRdv = _rdvService.GetAllRdv();
+//        return Ok(allRdv);
+//    }
+
+
+//    [HttpGet("{id}")]
+//    public IActionResult GetRdvById(int id)
+//    {
+//        var rdv = _rdvService.GetRdvById(id);
+//        if (rdv == null)
+//        {
+//            return NotFound();
+//        }
+
+//        // Vous pouvez retourner une réponse JSON
+//        return Ok(rdv);
+//    }
+
+//    [HttpPost]
+//    public IActionResult CreateRdv([FromBody] Rdv rdv)
+//    {
+//        var createdRdv = _rdvService.CreateRdv(rdv);
+//        return CreatedAtAction(nameof(GetRdvById), new { id = createdRdv.Id }, createdRdv);
+//    }
+
+//    [HttpPut("{id}")]
+//    public IActionResult UpdateRdv(int id, [FromBody] Rdv rdv)
+//    {
+//        var updatedRdv = _rdvService.UpdateRdv(id, rdv);
+//        if (updatedRdv == null)
+//        {
+//            return NotFound();
+//        }
+
+//        return Ok(updatedRdv);
+//    }
+
+//    [HttpDelete("{id}")]
+//    public IActionResult DeleteRdv(int id)
+//    {
+//        var result = _rdvService.DeleteRdv(id);
+//        if (!result)
+//        {
+//            return NotFound();
+//        }
+
+//        return NoContent();
+//    }
+//}
+
 using ApiRdv.Models;
+using Microsoft.AspNetCore.Mvc;
 
-
-[Route("api/[controller]")]
 [ApiController]
+[Route("api/rdv")]
 public class RdvController : ControllerBase
 {
     private readonly RdvService _rdvService;
@@ -13,56 +79,53 @@ public class RdvController : ControllerBase
     {
         _rdvService = rdvService;
     }
+
     [HttpGet]
     public IActionResult GetAllRdv()
     {
-        var allRdv = _rdvService.GetAllRdv();
-        return Ok(allRdv);
+        try
+        {
+            var rdvList = _rdvService.GetAllRdv();
+            return Ok(rdvList);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Erreur interne : {ex.Message}");
+        }
     }
-
 
     [HttpGet("{id}")]
     public IActionResult GetRdvById(int id)
     {
-        var rdv = _rdvService.GetRdvById(id);
-        if (rdv == null)
+        try
         {
-            return NotFound();
-        }
+            var rdv = _rdvService.GetRdvById(id);
+            if (rdv == null)
+            {
+                return NotFound();
+            }
 
-        // Vous pouvez retourner une réponse JSON
-        return Ok(rdv);
+            return Ok(rdv);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Erreur interne : {ex.Message}");
+        }
     }
 
     [HttpPost]
     public IActionResult CreateRdv([FromBody] Rdv rdv)
     {
-        var createdRdv = _rdvService.CreateRdv(rdv);
-        return CreatedAtAction(nameof(GetRdvById), new { id = createdRdv.Id }, createdRdv);
-    }
-
-    [HttpPut("{id}")]
-    public IActionResult UpdateRdv(int id, [FromBody] Rdv rdv)
-    {
-        var updatedRdv = _rdvService.UpdateRdv(id, rdv);
-        if (updatedRdv == null)
+        try
         {
-            return NotFound();
+            var createdRdv = _rdvService.CreateRdv(rdv);
+            return CreatedAtAction(nameof(GetRdvById), new { id = createdRdv.Id }, createdRdv);
         }
-
-        return Ok(updatedRdv);
-    }
-
-    [HttpDelete("{id}")]
-    public IActionResult DeleteRdv(int id)
-    {
-        var result = _rdvService.DeleteRdv(id);
-        if (!result)
+        catch (Exception ex)
         {
-            return NotFound();
+            return StatusCode(500, $"Erreur interne : {ex.Message}");
         }
-
-        return NoContent();
     }
+
+    // Autres actions pour la mise à jour, suppression, etc.
 }
-

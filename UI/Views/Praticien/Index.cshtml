@@ -1,0 +1,22 @@
+﻿@model List<Praticien>
+
+<h2>Liste des Praticiens</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>Specialité</th>
+            <th>Nom du Praticien</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var praticien in Model)
+        {
+            <tr>
+                <td>@praticien.Specialite</td>
+                <td>@praticien.NomPraticien</td>
+            </tr>
+        }
+    </tbody>
+</table>
