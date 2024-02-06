@@ -13,7 +13,7 @@ public class RdvController : Controller
     {
         _httpClient = httpClientFactory.CreateClient();
       //  _httpClient.BaseAddress = new Uri("https://votre-api-rdv.com"); // Assurez-vous d'ajuster l'URL de l'API
-        _httpClient.BaseAddress = new Uri("https://LocalHost:5001"); // Assurez-vous d'ajuster l'URL de l'API
+        _httpClient.BaseAddress = new Uri("https://LocalHost:5000"); // Assurez-vous d'ajuster l'URL de l'API
 
     }
 

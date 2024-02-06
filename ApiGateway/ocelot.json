@@ -1,35 +1,34 @@
 {
-  {
-    "Routes": [
-      {
-        "DownstreamPathTemplate": "/api/rdv/{id}",
-        "DownstreamScheme": "http",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "localhost",
-            "Port": 5001
-          }
-        ],
-        "UpstreamPathTemplate": "/api/rdv/{id}",
-        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
-      },
-      {
-        "DownstreamPathTemplate": "/api/praticien/{id}",
-        "DownstreamScheme": "http",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "localhost",
-            "Port": 5002
-          }
-        ],
-        "UpstreamPathTemplate": "/api/praticien/{id}",
-        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
-      }
-    ],
-    "GlobalConfiguration": {
-      "BaseUrl": "http://localhost:5000"
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/praticien",
+      "UpstreamPathTemplate": "/api/praticien",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5002"
+        }
+      ]
+    },
+
+    // ... autres configurations
+
+    {
+      "DownstreamPathTemplate": "/api/rdv",
+      "UpstreamPathTemplate": "/api/rdv",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5001"
+        }
+      ]
+      // ... autres configurations
     }
-  }
 
-
+    // ... autres configurations
+  ]
 }
