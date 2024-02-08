@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Reflection.Emit;
+﻿//using ApiPraticien.Models;
 using ApiRdv.Models;
 
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +16,10 @@ namespace ApiRdv.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            // Configurer la relation entre Praticien et Rdv si nécessaire
+           
         }
 
+       
     }
 }

@@ -12,6 +12,8 @@ public class PraticienController : ControllerBase
     {
         _praticienService = praticienService;
     }
+
+    //obtenir tous les praticiens
     [HttpGet]
     public IActionResult GetAllPraticien()
     {
@@ -19,6 +21,8 @@ public class PraticienController : ControllerBase
         return Ok(allRdv);
     }
 
+
+    //obtenir un praticien par ID
     [HttpGet("{id}")]
     public IActionResult GetPraticienById(int id)
     {
@@ -32,6 +36,7 @@ public class PraticienController : ControllerBase
         return Ok(praticien);
     }
 
+    //creer un nouveau praticien
     [HttpPost]
     public IActionResult CreatePraticien([FromBody] Praticien praticien)
     {
@@ -39,6 +44,7 @@ public class PraticienController : ControllerBase
         return CreatedAtAction(nameof(GetPraticienById), new { id = createdPraticien.Id }, createdPraticien);
     }
 
+    //modifier un praticiaen
     [HttpPut("{id}")]
     public IActionResult UpdatePraticien(int id, [FromBody] Praticien praticien)
     {
@@ -51,6 +57,8 @@ public class PraticienController : ControllerBase
         return Ok(updatedPraticien);
     }
 
+
+   // delete un praticien
     [HttpDelete("{id}")]
     public IActionResult DeletePraticien(int id)
     {

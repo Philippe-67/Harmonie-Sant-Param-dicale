@@ -1,34 +1,34 @@
-{
-  "Routes": [
-    {
-      "DownstreamPathTemplate": "/api/praticien",
-      "UpstreamPathTemplate": "/api/praticien",
-      "UpstreamHttpMethod": [ "GET" ],
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": "5002"
-        }
-      ]
-    },
+//{
+//  "Routes": [
+//    {
+//      "DownstreamPathTemplate": "/api/praticien",
+//      "UpstreamPathTemplate": "/api/praticien",
+//      "UpstreamHttpMethod": [ "GET" ],
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "5002"
+//        }
+//      ]
+//    },
 
-    // ... autres configurations
+//    // ... autres configurations
 
-    {
-      "DownstreamPathTemplate": "/api/rdv",
-      "UpstreamPathTemplate": "/api/rdv",
-      "UpstreamHttpMethod": [ "GET" ],
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": "5001"
-        }
-      ]
-      // ... autres configurations
-    }
+//    {
+//      "DownstreamPathTemplate": "/api/rdv",
+//      "UpstreamPathTemplate": "/api/rdv",
+//      "UpstreamHttpMethod": [ "GET" ],
+//      "DownstreamScheme": "https",
+//      "DownstreamHostAndPorts": [
+//        {
+//          "Host": "localhost",
+//          "Port": "5001"
+//        }
+//      ]
+//      // ... autres configurations
+//    }
 
-    // ... autres configurations
-  ]
-}
+//    // ... autres configurations
+//  ]
+//}

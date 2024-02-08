@@ -26,7 +26,7 @@ public class PraticienController : Controller
     {
         _httpClient = httpClientFactory.CreateClient();
         
-        _httpClient.BaseAddress = new Uri("https://LocalHost:5000"); // Assurez-vous d'ajuster l'URL de l'API
+        _httpClient.BaseAddress = new Uri("https://LocalHost:5002"); // Assurez-vous d'ajuster l'URL de l'API
 
     }
 

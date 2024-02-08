@@ -7,6 +7,8 @@ public class RdvRepository
 {
     private readonly RdvDbContext _rdvRepository;
 
+    public IEnumerable<object> Rdvs { get; internal set; }
+
     public RdvRepository(RdvDbContext rdvRepository)
     {
         _rdvRepository = rdvRepository;

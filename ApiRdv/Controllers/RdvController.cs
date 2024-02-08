@@ -93,6 +93,21 @@ public class RdvController : ControllerBase
             return StatusCode(500, $"Erreur interne : {ex.Message}");
         }
     }
+    // Nouvelle action pour récupérer les rendez-vous par praticien
+    [HttpGet("praticien/{id}")]
+    public IActionResult GetRdvByPraticien(int id)
+    {
+        try
+        {
+            var rdvList = _rdvService.GetRdvByPraticien(id);
+            return Ok(rdvList);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Erreur interne : {ex.Message}");
+        }
+    }
+
 
     [HttpGet("{id}")]
     public IActionResult GetRdvById(int id)
