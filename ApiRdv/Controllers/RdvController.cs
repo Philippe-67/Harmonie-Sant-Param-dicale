@@ -68,9 +68,9 @@
 
 using ApiRdv.Models;
 using Microsoft.AspNetCore.Mvc;
-
+[Route("api/[controller]")]
 [ApiController]
-[Route("api/rdv")]
+//[Route("api/rdv")]
 public class RdvController : ControllerBase
 {
     private readonly RdvService _rdvService;
@@ -94,19 +94,19 @@ public class RdvController : ControllerBase
         }
     }
     // Nouvelle action pour récupérer les rendez-vous par praticien
-    [HttpGet("praticien/{id}")]
-    public IActionResult GetRdvByPraticien(int id)
-    {
-        try
-        {
-            var rdvList = _rdvService.GetRdvByPraticien(id);
-            return Ok(rdvList);
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Erreur interne : {ex.Message}");
-        }
-    }
+    //[HttpGet("praticien/{id}")]
+    //public IActionResult GetRdvByPraticien(int id)
+    //{
+    //    try
+    //    {
+    //        var rdvList = _rdvService.GetRdvByPraticien(id);
+    //        return Ok(rdvList);
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        return StatusCode(500, $"Erreur interne : {ex.Message}");
+    //    }
+    //}
 
 
     [HttpGet("{id}")]

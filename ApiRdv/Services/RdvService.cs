@@ -21,11 +21,11 @@ public class RdvService
     {
         return _rdvRepository.GetRdvById(id);
     }
-    public List<Rdv> GetRdvByPraticien(int idPraticien)
-    {
-        // Logique pour récupérer les rendez-vous en fonction de l'identifiant du praticien
-        return _rdvRepository.Rdvs.Where(r => r.IdPraticien == idPraticien).ToList();
-    }
+    //public List<Rdv> GetRdvByPraticien(int idPraticien)
+    //{
+    //    // Logique pour récupérer les rendez-vous en fonction de l'identifiant du praticien
+    //    return _rdvRepository.Rdvs.Where(r => r.IdPraticien == idPraticien).ToList();
+    //}
 
     public Rdv CreateRdv(Rdv rdv)
     {

@@ -39,30 +39,30 @@ public class RdvController : Controller
             return View("Error", ex.Message);
         }
     }
-   // Action pour afficher la liste des rendez-vous d'un praticien spécifique
-    public async Task<IActionResult> Index(int idPraticien)
-    {
-        try
-        {
-            // Appel à une nouvelle méthode dans l'API pour récupérer les rendez-vous par praticien
-            var response = await _httpClient.GetAsync($"/api/rdv/praticien/{idPraticien}");
+   //// Action pour afficher la liste des rendez-vous d'un praticien spécifique
+   // public async Task<IActionResult> Index(int idPraticien)
+   // {
+   //     try
+   //     {
+   //         // Appel à une nouvelle méthode dans l'API pour récupérer les rendez-vous par praticien
+   //         var response = await _httpClient.GetAsync($"/api/rdv/praticien/{idPraticien}");
 
-            if (response.IsSuccessStatusCode)
-            {
-                var rdvList = await response.Content.ReadFromJsonAsync<List<Rdv>>();
-                return View(rdvList);
-            }
-            else
-            {
-                var errorMessage = await response.Content.ReadAsStringAsync();
-                return View("Error", errorMessage);
-            }
-        }
-        catch (Exception ex)
-        {
-            return View("Error", ex.Message);
-        }
-    }
+   //         if (response.IsSuccessStatusCode)
+   //         {
+   //             var rdvList = await response.Content.ReadFromJsonAsync<List<Rdv>>();
+   //             return View(rdvList);
+   //         }
+   //         else
+   //         {
+   //             var errorMessage = await response.Content.ReadAsStringAsync();
+   //             return View("Error", errorMessage);
+   //         }
+   //     }
+   //     catch (Exception ex)
+   //     {
+   //         return View("Error", ex.Message);
+   //     }
+   // }
 }
 
     //public IActionResult Details(int id)
