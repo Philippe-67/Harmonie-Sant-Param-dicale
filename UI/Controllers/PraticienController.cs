@@ -1,22 +1,6 @@
-﻿//using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using UI.Models;
 
-//namespace UI.Controllers
-//{
-//    public class PraticienController1 : Controller
-//    {
-//        public IActionResult Index()
-//        {
-//            return View();
-//        }
-//    }
-//}
-
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using UI.Models; // Assurez-vous d'ajuster le namespace
 
 public class PraticienController : Controller
 {

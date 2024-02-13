@@ -22,53 +22,53 @@ public class PraticienController : ControllerBase
     }
 
 
-    //obtenir un praticien par ID
-    [HttpGet("{id}")]
-    public IActionResult GetPraticienById(int id)
-    {
-        var praticien = _praticienService.GetPraticienById(id);
-        if (praticien == null)
-        {
-            return NotFound();
-        }
+   // //obtenir un praticien par ID
+   // [HttpGet("{id}")]
+   // public IActionResult GetPraticienById(int id)
+   // {
+   //     var praticien = _praticienService.GetPraticienById(id);
+   //     if (praticien == null)
+   //     {
+   //         return NotFound();
+   //     }
 
-        // Vous pouvez retourner une réponse JSON
-        return Ok(praticien);
-    }
+   //     // Vous pouvez retourner une réponse JSON
+   //     return Ok(praticien);
+   // }
 
-    //creer un nouveau praticien
-    [HttpPost]
-    public IActionResult CreatePraticien([FromBody] Praticien praticien)
-    {
-        var createdPraticien = _praticienService.CreatePraticien(praticien);
-        return CreatedAtAction(nameof(GetPraticienById), new { id = createdPraticien.Id }, createdPraticien);
-    }
+   // //creer un nouveau praticien
+   // [HttpPost]
+   // public IActionResult CreatePraticien([FromBody] Praticien praticien)
+   // {
+   //     var createdPraticien = _praticienService.CreatePraticien(praticien);
+   //     return CreatedAtAction(nameof(GetPraticienById), new { id = createdPraticien.Id }, createdPraticien);
+   // }
 
-    //modifier un praticiaen
-    [HttpPut("{id}")]
-    public IActionResult UpdatePraticien(int id, [FromBody] Praticien praticien)
-    {
-        var updatedPraticien = _praticienService.UpdatePraticien(id, praticien);
-        if (updatedPraticien == null)
-        {
-            return NotFound();
-        }
+   // //modifier un praticiaen
+   // [HttpPut("{id}")]
+   // public IActionResult UpdatePraticien(int id, [FromBody] Praticien praticien)
+   // {
+   //     var updatedPraticien = _praticienService.UpdatePraticien(id, praticien);
+   //     if (updatedPraticien == null)
+   //     {
+   //         return NotFound();
+   //     }
 
-        return Ok(updatedPraticien);
-    }
+   //     return Ok(updatedPraticien);
+   // }
 
 
-   // delete un praticien
-    [HttpDelete("{id}")]
-    public IActionResult DeletePraticien(int id)
-    {
-        var result = _praticienService.DeletePraticien(id);
-        if (!result)
-        {
-            return NotFound();
-        }
+   //// delete un praticien
+   // [HttpDelete("{id}")]
+   // public IActionResult DeletePraticien(int id)
+   // {
+   //     var result = _praticienService.DeletePraticien(id);
+   //     if (!result)
+   //     {
+   //         return NotFound();
+   //     }
 
-        return NoContent();
-    }
+   //     return NoContent();
+   // }
 }
 
