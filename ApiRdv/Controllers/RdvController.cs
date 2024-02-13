@@ -127,8 +127,12 @@ public class RdvController : ControllerBase
             return StatusCode(500, $"Erreur interne : {ex.Message}");
         }
     }
-
-    [HttpPost]
+    /// <summary>
+    /// /////////////ici modification pour creer un rdv////////////////////////
+    /// </summary>
+    /// <param name="rdv"></param>
+    /// <returns></returns>
+    [HttpPost("creer-rdv")]
     public IActionResult CreateRdv([FromBody] Rdv rdv)
     {
         try

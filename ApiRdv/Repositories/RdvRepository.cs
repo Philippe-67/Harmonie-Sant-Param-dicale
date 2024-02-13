@@ -27,7 +27,7 @@ public class RdvRepository
     public Rdv CreateRdv(Rdv rdv)
     {
         _rdvRepository.Rdvs.Add(rdv);
-        _rdvRepository  .SaveChanges();
+        _rdvRepository.SaveChanges();
         return rdv;
     }
 
@@ -41,7 +41,7 @@ public class RdvRepository
 
         existingRdv.Date = rdv.Date;
         existingRdv.NomPatient = rdv.NomPatient;
-        existingRdv.NomPraticien= rdv.NomPraticien;
+        existingRdv.NomPraticien = rdv.NomPraticien;
 
         _rdvRepository.SaveChanges();
         return existingRdv;

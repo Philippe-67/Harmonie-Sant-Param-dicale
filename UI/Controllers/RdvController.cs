@@ -13,7 +13,7 @@ public class RdvController : Controller
     {
         _httpClient = httpClientFactory.CreateClient();
       //  _httpClient.BaseAddress = new Uri("https://votre-api-rdv.com"); // Assurez-vous d'ajuster l'URL de l'API
-        _httpClient.BaseAddress = new Uri("https://LocalHost:5001"); // Assurez-vous d'ajuster l'URL de l'API
+        _httpClient.BaseAddress = new Uri("https://LocalHost:5000"); // Assurez-vous d'ajuster l'URL de l'API 5001
 
     }
 
@@ -63,51 +63,52 @@ public class RdvController : Controller
    //         return View("Error", ex.Message);
    //     }
    // }
+
+
+//public IActionResult Details(int id)
+//{
+//    // Logique pour obtenir les détails du rendez-vous par son ID
+//    // Utilisez l'API de l'arrière-plan ou un service dédié
+
+//    // Exemple statique pour l'illustration
+//    var rdv = new Rdv { Id = id, Date = DateTime.Now, NomPatient = "John Doe", NomPraticien = "Dr. Smith" };
+
+//    return View(rdv);
+
+
+
+/// <summary>
+/// //////////////////////////////////////////////////////////////CREATE///////////////////////////////////////////////////////////////////
+/// </summary>
+/// <returns></returns>
+
+public IActionResult Create()
+{
+    return View();
 }
 
-    //public IActionResult Details(int id)
-    //{
-    //    // Logique pour obtenir les détails du rendez-vous par son ID
-    //    // Utilisez l'API de l'arrière-plan ou un service dédié
+[HttpPost]
+public async Task<IActionResult> Create(Rdv rdv)
+{
+    try
+    {
+        var response = await _httpClient.PostAsJsonAsync("/api/rdv", rdv);
 
-    //    // Exemple statique pour l'illustration
-    //    var rdv = new Rdv { Id = id, Date = DateTime.Now, NomPatient = "John Doe", NomPraticien = "Dr. Smith" };
-
-    //    return View(rdv);
-    //}
-
-
-    /// <summary>
-    /// //////////////////////////////////////////////////////////////CREATE///////////////////////////////////////////////////////////////////
-    /// </summary>
-    /// <returns></returns>
-
-//    public IActionResult Create()
-//    {
-//        return View();
-//    }
-
-//    [HttpPost]
-//    public async Task<IActionResult> Create(Rdv rdv)
-//    {
-//        try
-//        {
-//            var response = await _httpClient.PostAsJsonAsync("/api/rdv", rdv);
-
-//            if (response.IsSuccessStatusCode)
-//            {
-//                // Redirigez vers la liste des rendez-vous après la création réussie
-//                return RedirectToAction("Index");
-//            }
-//            else
-//            {
-//                var errorMessage = await response.Content.ReadAsStringAsync();
-//                return View("Error", errorMessage);
-//            }
-//        }
-//        catch (Exception ex)
-//        {
-//            return View("Error", ex.Message);
-//        }
-//    }
+        if (response.IsSuccessStatusCode)
+        {
+            // Redirigez vers la liste des rendez-vous après la création réussie
+            return RedirectToAction("Index");
+        }
+        else
+        {
+            var errorMessage = await response.Content.ReadAsStringAsync();
+            return View("Error", errorMessage);
+        }
+    }
+    catch (Exception ex)
+    {
+        return View("Error", ex.Message);
+    }
+}
+}
 
