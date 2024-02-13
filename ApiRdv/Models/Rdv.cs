@@ -11,7 +11,7 @@ namespace ApiRdv.Models
 
 
         // Ajout du champ IdPraticien pour la relation
-        public int IdPraticien { get; set; }
+      //  public int IdPraticien { get; set; }
 
        
 
