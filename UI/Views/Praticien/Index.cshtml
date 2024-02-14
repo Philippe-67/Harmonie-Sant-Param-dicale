@@ -2,21 +2,13 @@
 
 <h2>Liste des Praticiens</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            
-            <th>Specialité</th>
-            <th>Nom du Praticien</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var praticien in Model)
+
+    <div>
+        @using (Html.BeginForm("Index", "Praticien", FormMethod.Post))
         {
-            <tr>
-                <td>@praticien.Specialite</td>
-                <td>@praticien.NomPraticien</td>
-            </tr>
+            @Html.DropDownList("Id", ViewBag.PraticiensList as SelectList, "Sélectionner un praticien", new { @class = "form-control" })
+            <input type="submit" value="Afficher l'agenda" class="btn btn-primary" />
         }
-    </tbody>
-</table>
+    </div>
+
+  

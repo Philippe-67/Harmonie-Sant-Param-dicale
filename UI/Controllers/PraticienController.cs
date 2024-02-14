@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using UI.Models;
 
 
@@ -13,7 +14,7 @@ public class PraticienController : Controller
         _httpClient.BaseAddress = new Uri("https://LocalHost:5000"); // Assurez-vous d'ajuster l'URL de l'API
 
     }
-
+    //methode pour obtenir les elts de ViewBag .PraticienList
     public async Task<IActionResult> Index()
     {
         try
@@ -23,7 +24,9 @@ public class PraticienController : Controller
             if (response.IsSuccessStatusCode)
             {
                 var praticienList = await response.Content.ReadFromJsonAsync<List<Praticien>>();
+                ViewBag.PraticiensList = new SelectList(praticienList, "Id", "Nom");
                 return View(praticienList);
+
             }
             else
             {
@@ -36,8 +39,14 @@ public class PraticienController : Controller
             return View("Error", ex.Message);
         }
     }
+    [HttpPost]//pour gérer la soumission du formulaire avec la DropDownList sélectionnée.
+    public IActionResult Index(int PraticienId)
+    {
+        // Faites quelque chose avec l'ID du praticien, par exemple, redirigez vers une action qui affiche l'agenda
+        return RedirectToAction("AfficherAgenda", new { praticienId = PraticienId });
+    }
 
-    
+
     public IActionResult Create()
     {
         return View();
